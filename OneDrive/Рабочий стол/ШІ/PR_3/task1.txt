@@ -1,0 +1,38 @@
+mother('Іванко' , 'Сергій').
+mother('Віталія' , 'Семен').
+mother('Віталія' , 'Сніжана').
+mother('Іванко' , 'Устим').
+mother('Віта' , 'Влад').
+mother('Софія' , 'Тереза').
+mother('Софія' , 'Тарас').
+father('Панас' , 'Сніжана').
+father('Панас' , 'Семен').
+father('Семен' , 'Вадим').
+father('Семен' , 'Софія').
+father('Устим' , 'Софія').
+father('Устим' , 'Вадим').
+father('Отто' , 'Устим').
+father('Отто' , 'Сергій').
+father('Максим' , 'Влад').
+father('Влад' , 'Тереза').
+father('Влад' , 'Тарас').
+
+grandmother(X, Y):-
+    mother(X, Z), (mother(Z, Y); father(Z, Y)).
+
+grandfather(X, Y):-
+    father(X, Z), (mother(Z, Y); father(Z, Y)).
+
+main:-
+    write('Іванко бабуся Софії?'), nl,
+    grandmother('Іванко', 'Софія'),
+    write('Віталія бабуся Вадима?'), nl,
+    grandmother('Віталія', 'Вадим'),
+    write('Іванко бабуся Вадима?'), nl,
+    grandmother('Іванко', 'Вадим'),
+    write('Панас дід Софії?'), nl,
+    grandfather('Панас', 'Софія'),
+    write('Отто дід Софії?'), nl,
+    grandfather('Отто', 'Софія'),
+    write('Панас дід Вадима?'), nl,
+    grandfather('Панас', 'Вадим').
